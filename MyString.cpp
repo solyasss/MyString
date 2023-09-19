@@ -4,14 +4,14 @@
 
 using namespace std;
 
-int MyString::object_count = 0;
+int MyString::count = 0;
 
 MyString::MyString()
 {
     length = 80;
     str = new char[length];
     str[0] = '\0';
-    object_count++;
+    count++;
 }
 
 MyString::MyString(int size)
@@ -19,7 +19,7 @@ MyString::MyString(int size)
     length = size;
     str = new char[length];
     str[0] = '\0';
-    object_count++;
+    count++;
 }
 
 MyString::MyString(const char *input)
@@ -27,13 +27,13 @@ MyString::MyString(const char *input)
     length = strlen(input) + 1;
     str = new char[length];
     strcpy(str, input);
-    object_count++;
+    count++;
 }
 
 MyString::~MyString()
 {
     delete[] str;
-    object_count--;
+    count--;
 }
 
 void MyString::input_string()
@@ -47,21 +47,21 @@ void MyString::display_string() const
     cout << "String: " << str << endl;
 }
 
-MyString MyString::operator+(const MyString &other) const
+MyString MyString::operator+(const MyString &obj) const
 {
-    int new_length = length + other.length - 1;
+    int new_length = length + obj.length - 1;
     MyString result(new_length);
     strcpy(result.str, str);
-    strcat(result.str, other.str);
+    strcat(result.str, obj.str);
     return result;
 }
 
-MyString &MyString::operator+=(const MyString &other)
+MyString &MyString::operator+=(const MyString &obj)
 {
-    int new_length = length + other.length - 1;
+    int new_length = length + obj.length - 1;
     char *new_str = new char[new_length];
     strcpy(new_str, str);
-    strcat(new_str, other.str);
+    strcat(new_str, obj.str);
     delete[] str;
     str = new_str;
     length = new_length;
@@ -84,12 +84,12 @@ const char &MyString::operator[](int index) const
     }
 }
 
-void MyString::my_strcpy(const MyString &other)
+void MyString::my_strcpy(const MyString &obj)
 {
     delete[] str;
-    length = other.length;
+    length = obj.length;
     str = new char[length];
-    strcpy(str, other.str);
+    strcpy(str, obj.str);
 }
 
 bool MyString::my_strstr(const char *substr) const
@@ -112,12 +112,12 @@ int MyString::my_strlen() const
     return length;
 }
 
-void MyString::my_strcat(const MyString &other)
+void MyString::my_strcat(const MyString &obj)
 {
-    int new_length = length + other.length - 1;
+    int new_length = length + obj.length - 1;
     char *new_str = new char[new_length];
     strcpy(new_str, str);
-    strcat(new_str, other.str);
+    strcat(new_str, obj.str);
     delete[] str;
     str = new_str;
     length = new_length;
@@ -137,12 +137,12 @@ void MyString::my_del_chr(char c)
     length = count + 1;
 }
 
-int MyString::my_strcmp(const MyString &other) const
+int MyString::my_strcmp(const MyString &obj) const
 {
-    return strcmp(str, other.str);
+    return strcmp(str, obj.str);
 }
 
 int MyString::get_object_count()
 {
-    return object_count;
+    return count;
 }
