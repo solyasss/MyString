@@ -30,19 +30,19 @@ MyString::MyString(const char *input)
     count++;
 }
 
-MyString::MyString(const MyString &other)
+MyString::MyString(const MyString &obj)
 {
-    length = other.length;
+    length = obj.length;
     str = new char[length];
-    strcpy(str, other.str);
+    strcpy(str, obj.str);
     count++;
 }
 
-MyString::MyString(MyString &&other)
+MyString::MyString(MyString &&obj)
 {
-    length = other.length;
-    str = other.str;
-    other.str = nullptr;
+    length = obj.length;
+    str = obj.str;
+    obj.str = nullptr;
     count++;
 }
 
@@ -233,16 +233,16 @@ void MyString::set_length(int n)
     }
 }
 
-ostream &MyString::operator<<(ostream &os) const
+ostream &MyString::operator<<(ostream &o) const
 {
-    os << str;
-    return os;
+    o << str;
+    return o;
 }
 
-istream &MyString::operator>>(istream &is)
+istream &MyString::operator>>(istream &i)
 {
     char buff[1000];
-    is.getline(buff, 1000);
+    i.getline(buff, 1000);
     set_str(buff);
-    return is;
+    return i;
 }

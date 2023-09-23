@@ -53,10 +53,10 @@ int main()
     MyString str5 = {'H', 'e', 'l', 'l', 'o'};
     str5.display_string();
 
-    cout << "String: " << str5.get_str() << endl;
-    cout << "Length: " << str5.get_length() << endl;
+    cout << "String is- " << str5.get_str() << endl;
+    cout << "Length is- " << str5.get_length() << endl;
 
-    str5.set_str("New:");
+    str5.set_str("Set a new one:");
     str5.set_length(11);
 
     cout << "New string: " << str5.get_str() << endl;
@@ -64,8 +64,8 @@ int main()
 
     cout << "At index 3: " << str5[3] << endl;
 
-    MyString s1("Hello");
-    MyString s2(" World");
+    MyString s1("Hi");
+    MyString s2("Olga");
     MyString s3 = s1 + s2;
 
     cout << "s3: " << s3.get_str() << endl;

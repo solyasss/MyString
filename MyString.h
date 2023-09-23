@@ -12,8 +12,8 @@ public:
     MyString();
     MyString(int size);
     MyString(const char *input);
-    MyString(const MyString &other);
-    MyString(MyString &&other);
+    MyString(const MyString &obj);
+    MyString(MyString &&obj);
     ~MyString();
 
     MyString &operator=(const MyString &obj);
@@ -45,9 +45,9 @@ public:
 
     static int get_object_count();
 
-    ostream &operator<<(ostream &os) const;
-    istream &operator>>(istream &is);
+    ostream &operator<<(ostream &o) const;
+    istream &operator>>(istream &i);
 };
 
-ostream &operator<<(ostream &os, const MyString &obj);
-istream &operator>>(istream &is, MyString &obj);
+ostream &operator<<(ostream &o, const MyString &obj);
+istream &operator>>(istream &i, MyString &obj);
