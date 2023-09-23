@@ -30,10 +30,50 @@ MyString::MyString(const char *input)
     count++;
 }
 
+MyString::MyString(const MyString &other)
+{
+    length = other.length;
+    str = new char[length];
+    strcpy(str, other.str);
+    count++;
+}
+
+MyString::MyString(MyString &&other)
+{
+    length = other.length;
+    str = other.str;
+    other.str = nullptr;
+    count++;
+}
+
 MyString::~MyString()
 {
     delete[] str;
     count--;
+}
+
+MyString &MyString::operator=(const MyString &obj)
+{
+    if (this != &obj)
+    {
+        delete[] str;
+        length = obj.length;
+        str = new char[length + 1];
+        strcpy(str, obj.str);
+    }
+    return *this;
+}
+
+MyString &MyString::operator=(MyString &&obj)
+{
+    if (this != &obj)
+    {
+        delete[] str;
+        length = obj.length;
+        str = obj.str;
+        obj.str = nullptr;
+    }
+    return *this;
 }
 
 void MyString::input_string()
@@ -191,4 +231,18 @@ void MyString::set_length(int n)
     {
         length = 0;
     }
+}
+
+ostream &MyString::operator<<(ostream &os) const
+{
+    os << str;
+    return os;
+}
+
+istream &MyString::operator>>(istream &is)
+{
+    char buff[1000];
+    is.getline(buff, 1000);
+    set_str(buff);
+    return is;
 }

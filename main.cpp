@@ -1,6 +1,5 @@
 #include "MyString.h"
 #include <iostream>
-
 using namespace std;
 
 int main()
@@ -67,13 +66,11 @@ int main()
 
     MyString s1("Hello");
     MyString s2(" World");
-    MyString s3 = s1 + 10;
-    MyString s4 = 10 + s2;
+    MyString s3 = s1 + s2;
 
     cout << "s3: " << s3.get_str() << endl;
-    cout << "s4: " << s4.get_str() << endl;
 
-    s1 += 10;
+    s1 += s2;
     cout << "s1: " << s1.get_str() << endl;
 
     return 0;

@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 class MyString
 {
 private:
@@ -9,7 +12,12 @@ public:
     MyString();
     MyString(int size);
     MyString(const char *input);
+    MyString(const MyString &other);
+    MyString(MyString &&other);
     ~MyString();
+
+    MyString &operator=(const MyString &obj);
+    MyString &operator=(MyString &&obj);
 
     void input_string();
     void display_string() const;
@@ -36,4 +44,10 @@ public:
     void set_length(int n);
 
     static int get_object_count();
+
+    ostream &operator<<(ostream &os) const;
+    istream &operator>>(istream &is);
 };
+
+ostream &operator<<(ostream &os, const MyString &obj);
+istream &operator>>(istream &is, MyString &obj);
