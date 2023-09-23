@@ -29,5 +29,11 @@ public:
     void my_del_chr(char c);
     int my_strcmp(const MyString &obj) const;
 
+    MyString(initializer_list<char> param);
+    char *get_str() const;
+    void set_str(const char *n);
+    int get_length() const;
+    void set_length(int n);
+
     static int get_object_count();
 };

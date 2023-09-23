@@ -146,3 +146,49 @@ int MyString::get_object_count()
 {
     return count;
 }
+
+MyString::MyString(initializer_list<char> param)
+{
+    length = param.size();
+    str = new char[length];
+    int i = 0;
+    for (auto pt = param.begin(); pt != param.end(); pt++)
+    {
+        str[i] = *pt;
+        i++;
+    }
+    str[length] = '\0';
+}
+
+char *MyString::get_str() const
+{
+    return str;
+}
+
+void MyString::set_str(const char *n)
+{
+    if (str != nullptr)
+    {
+        delete[] str;
+    }
+    length = strlen(n);
+    str = new char[length + 1];
+    strcpy(str, n);
+}
+
+int MyString::get_length() const
+{
+    return length;
+}
+
+void MyString::set_length(int n)
+{
+    if (n >= 0)
+    {
+        length = n;
+    }
+    else
+    {
+        length = 0;
+    }
+}
